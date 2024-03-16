@@ -1,0 +1,42 @@
+.input-manual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  padding: 0 16px;
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .input__label {
+      font-family: 'Neue Haas Display Roman Italic', serif;
+      font-size: 24px;
+    }
+
+    .input__area {
+      height: 82px;
+      resize: none;
+      padding: 8px;
+
+      background: #1E1E1E;
+      border: 1px solid #72829B;
+      border-radius: 8px;
+
+      font-family: 'Neue Haas Display Roman Italic', serif;
+      font-size: 24px;
+      line-height: 36px;
+
+      &:focus {
+        outline: none !important;
+        border: 1px solid #72829B;
+      }
+    }
+  }
+
+  .input__button {
+    height: 50px;
+    border-radius: 8px;
+  }
+}

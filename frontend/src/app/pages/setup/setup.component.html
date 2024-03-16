@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="settings">
+    <div class="settings-container">
+      <label class="settings__label">Chat</label>
+      <button mat-flat-button class="settings__button" (click)="goToChat()">
+        <mat-icon>chat</mat-icon>
+      </button>
+    </div>
+    <div class="settings-container">
+      <label class="settings__label">Input</label>
+      <mat-chip-listbox>
+        <mat-chip-option>Manual</mat-chip-option>
+        <mat-chip-option>File</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  </div>
+  <div class="input-manual">
+    <div class="input-container">
+      <label class="input__label human-color">{{humanName}}:</label>
+      <textarea class="input__area human-color" [(ngModel)]="humanText"></textarea>
+    </div>
+    <div class="input-container">
+      <label class="input__label ai-color">{{aiName}}:</label>
+      <textarea class="input__area ai-color" [(ngModel)]="aiText"></textarea>
+    </div>
+    <button mat-flat-button class="input__button" (click)="handleNewDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

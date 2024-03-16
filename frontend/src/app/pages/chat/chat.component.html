@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="settings">
+    <div class="settings-container">
+      <label class="settings__label">Setup</label>
+      <button mat-flat-button class="settings__button" (click)="goToSetup()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="settings-container">
+      <label class="settings__label">Input</label>
+      <mat-chip-listbox>
+        <mat-chip-option>Text</mat-chip-option>
+        <mat-chip-option>Voice</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+    <div class="settings-container">
+      <label class="settings__label">Output</label>
+      <mat-chip-listbox>
+        <mat-chip-option>Text</mat-chip-option>
+        <mat-chip-option>Voice</mat-chip-option>
+        <mat-chip-option>Text & Voice</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  </div>
+  <div class="chat">
+    <div class="history">
+      <div *ngFor="let message of messages" class="message">
+        <span [ngClass]="message.userType === userType.HUMAN ? 'human-color' : 'ai-color'">
+          {{ message.userName }}:
+        </span>
+        <span [ngClass]="message.userType === userType.HUMAN ? 'human-color' : 'ai-color'">
+          {{ message.text }}
+        </span>
+      </div>
+    </div>
+    <div class="input">
+      <textarea class="input__area" [(ngModel)]="humanText"></textarea>
+      <button mat-flat-button class="input__button" (click)="handleNewMessage()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
