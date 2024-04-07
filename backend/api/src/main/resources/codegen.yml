@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: Talk With Me API
+  description: Contracts for Talk With Me rest services
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+tags:
+  - name: Chat
+    description: A set of endpoints for chatting
+
+paths:
+  /chats:
+    post:
+      tags:
+        - Chat
+      summary: Have a chat
+      operationId: chat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatRequest"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      properties:
+        humanMessage:
+          type: string
+
+    ChatResponse:
+      type: object
+      properties:
+        aiMessage:
+          type: string

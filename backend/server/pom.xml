@@ -20,11 +20,24 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- AI -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ai</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -35,7 +48,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.green.talkwithme.TalkWithMeApplication</mainClass>
+                    <mainClass>com.green.talkwithme.server.TalkWithMeServerApplication</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>

@@ -11,4 +11,57 @@
 
     <artifactId>api</artifactId>
     <packaging>jar</packaging>
+
+    <properties>
+        <codegen.generator.version>7.4.0</codegen.generator.version>
+        <codegen.generator.plugin.version>7.4.0</codegen.generator.plugin.version>
+        <codegen.spec.file>${project.basedir}/src/main/resources/codegen.yml</codegen.spec.file>
+        <codegen.package>com.green.talkwithme</codegen.package>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator</artifactId>
+            <version>${codegen.generator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${codegen.generator.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${codegen.spec.file}</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <apiPackage>${codegen.package}.api</apiPackage>
+                            <modelPackage>${codegen.package}.dto</modelPackage>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <configOptions>
+                                <interfaceOnly>true</interfaceOnly>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <useTags>true</useTags>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <openApiNullable>false</openApiNullable>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
