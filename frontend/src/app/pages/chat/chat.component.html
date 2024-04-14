@@ -34,7 +34,10 @@
       </div>
     </div>
     <div class="input">
-      <textarea class="input__area" [(ngModel)]="humanText"></textarea>
+      <textarea class="input__area" [(ngModel)]="humanText"
+                (keydown.enter)="$event.preventDefault()"
+                (keyup.enter)="handleNewMessage()">
+      </textarea>
       <button mat-flat-button class="input__button" (click)="handleNewMessage()">
         <mat-icon>send</mat-icon>
       </button>

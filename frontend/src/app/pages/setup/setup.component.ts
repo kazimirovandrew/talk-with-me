@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DialogService } from '../../shared/services/dialog.service';
+import { ChatService } from '../../shared/services/chat.service';
 import { RoutingService } from '../../shared/services/routing.service';
 
 @Component({
@@ -14,17 +14,17 @@ export class SetupComponent {
   public aiText: string = '';
 
   constructor(private routingService: RoutingService,
-              private dialogService: DialogService) {
+              private chatService: ChatService) {
   }
 
   public handleNewDialog(): void {
     if (!!this.humanText && !!this.aiText) {
-      this.dialogService.addNewDialog(
+      this.chatService.addNewDialog(
         this.humanName, this.humanText, this.aiName, this.aiText
       );
+      this.humanText = '';
+      this.aiText = '';
     }
-    this.humanText = '';
-    this.aiText = '';
   }
 
   public goToChat(): void {

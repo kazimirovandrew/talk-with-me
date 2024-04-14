@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Message } from '../../shared/models/message.model';
-import { DialogService } from '../../shared/services/dialog.service';
+import { ChatService } from '../../shared/services/chat.service';
 import { RoutingService } from '../../shared/services/routing.service';
 import { UserType } from '../../shared/models/user-type.enum';
 
@@ -16,16 +16,16 @@ export class ChatComponent {
   public messages: Message [] = [];
 
   constructor(private routingService: RoutingService,
-              private dialogService: DialogService) {
+              private chatService: ChatService) {
   }
 
-  public handleNewMessage(): void {
+  public async handleNewMessage(): Promise<void> {
     if (!!this.humanText) {
       const dialog =
-        this.dialogService.doDialog(this.humanName, this.humanText);
+        await this.chatService.chat(this.humanName, this.humanText);
       this.messages.push(...dialog);
+      this.humanText = '';
     }
-    this.humanText = '';
   }
 
   public goToSetup(): void {
